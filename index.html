@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sarah Mitchell — Strategy and operations consultant helping growing companies scale with clarity." />
+  <title>Sarah Mitchell | Strategy Consultant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#10231f;
+      --muted:#5e6b67;
+      --cream:#f5f1e8;
+      --paper:#fffdf8;
+      --sage:#b9c9b5;
+      --green:#1d5a49;
+      --gold:#c79c51;
+      --line:rgba(16,35,31,.12);
+      --shadow:0 24px 70px rgba(15,39,31,.12);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"DM Sans",sans-serif;
+      color:var(--ink);
+      background:var(--paper);
+      line-height:1.65;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1160px,calc(100% - 40px));margin:auto}
+    .nav{
+      position:fixed;top:0;left:0;right:0;z-index:20;
+      background:rgba(255,253,248,.88);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(18px);
+    }
+    .nav-inner{
+      min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:28px;
+    }
+    .brand{font-family:"Playfair Display",serif;font-weight:700;font-size:1.22rem}
+    .nav-links{display:flex;align-items:center;gap:28px;font-size:.92rem;font-weight:600}
+    .nav-links a:hover{color:var(--green)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:50px;padding:0 22px;border-radius:999px;font-weight:700;
+      transition:.25s ease;border:1px solid transparent;
+    }
+    .btn-primary{background:var(--green);color:#fff;box-shadow:0 10px 28px rgba(29,90,73,.22)}
+    .btn-primary:hover{transform:translateY(-2px);background:#174b3d}
+    .btn-secondary{border-color:var(--ink);background:transparent}
+    .btn-secondary:hover{background:var(--ink);color:#fff}
+    .hero{
+      min-height:820px;padding:150px 0 90px;
+      background:
+        radial-gradient(circle at 8% 20%,rgba(199,156,81,.16),transparent 28%),
+        radial-gradient(circle at 90% 10%,rgba(185,201,181,.45),transparent 30%),
+        linear-gradient(135deg,#fffdf8 0%,#f2efe6 100%);
+      overflow:hidden;
+    }
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:70px}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      text-transform:uppercase;letter-spacing:.17em;font-size:.76rem;font-weight:700;color:var(--green);
+    }
+    .eyebrow:before{content:"";width:36px;height:1px;background:var(--gold)}
+    h1,h2,h3{font-family:"Playfair Display",serif;line-height:1.08;margin:0}
+    h1{font-size:clamp(3.4rem,7vw,6.6rem);letter-spacing:-.045em;margin:20px 0 26px}
+    h1 span{color:var(--green)}
+    .hero-copy>p{font-size:1.2rem;color:var(--muted);max-width:650px;margin:0 0 32px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .trust-row{display:flex;gap:28px;flex-wrap:wrap;margin-top:42px;padding-top:28px;border-top:1px solid var(--line)}
+    .trust-item strong{display:block;font-size:1.35rem}
+    .trust-item span{font-size:.84rem;color:var(--muted)}
+    .portrait-wrap{position:relative}
+    .portrait-card{
+      position:relative;border-radius:220px 220px 28px 28px;
+      min-height:600px;overflow:hidden;background:#dfe7dc;box-shadow:var(--shadow)
+    }
+    .portrait-card svg{width:100%;height:100%;position:absolute;inset:0}
+    .floating-card{
+      position:absolute;left:-34px;bottom:42px;background:#fff;border:1px solid var(--line);
+      padding:20px 22px;border-radius:18px;box-shadow:0 18px 40px rgba(16,35,31,.12);
+      max-width:245px;
+    }
+    .floating-card small{display:block;color:var(--muted);margin-bottom:5px}
+    .floating-card strong{font-size:1.08rem}
+    section{padding:105px 0}
+    .section-heading{display:grid;grid-template-columns:.75fr 1.25fr;gap:70px;align-items:end;margin-bottom:55px}
+    .section-heading h2{font-size:clamp(2.4rem,4.8vw,4.2rem);letter-spacing:-.035em}
+    .section-heading p{color:var(--muted);font-size:1.08rem;margin:0}
+    .services{background:#10231f;color:#fff}
+    .services .section-heading p{color:#bdc9c5}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .service-card{
+      border:1px solid rgba(255,255,255,.13);padding:32px;border-radius:22px;
+      background:rgba(255,255,255,.035);transition:.25s ease;
+    }
+    .service-card:hover{transform:translateY(-6px);background:rgba(255,255,255,.07)}
+    .icon{
+      width:48px;height:48px;border-radius:14px;display:grid;place-items:center;
+      background:var(--gold);color:var(--ink);font-weight:800;margin-bottom:35px;
+    }
+    .service-card h3{font-size:1.55rem;margin-bottom:14px}
+    .service-card p{color:#bdc9c5;margin:0}
+    .results{background:var(--cream)}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+    .stat{background:var(--paper);padding:38px 30px}
+    .stat strong{font-family:"Playfair Display",serif;font-size:3.3rem;display:block;line-height:1;color:var(--green)}
+    .stat span{color:var(--muted);font-size:.92rem}
+    .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:58px}
+    .case-card{background:#fff;border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:0 18px 45px rgba(16,35,31,.07)}
+    .case-visual{height:270px;display:flex;align-items:flex-end;padding:28px;background:linear-gradient(135deg,#1d5a49,#9eb59e);color:#fff}
+    .case-visual.alt{background:linear-gradient(135deg,#6e5434,#d5b77c)}
+    .case-visual span{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase}
+    .case-body{padding:30px}
+    .case-body h3{font-size:1.65rem;margin-bottom:12px}
+    .case-body p{color:var(--muted)}
+    .result-pill{display:inline-block;background:#edf4ed;color:var(--green);padding:8px 12px;border-radius:999px;font-size:.8rem;font-weight:700}
+    .testimonial{background:#fff}
+    .quote-box{
+      max-width:950px;margin:auto;text-align:center;padding:40px 0;
+    }
+    .quote-mark{font-family:"Playfair Display",serif;font-size:5rem;color:var(--gold);line-height:.6}
+    blockquote{font-family:"Playfair Display",serif;font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.3;margin:28px 0}
+    .quote-person{color:var(--muted)}
+    .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
+    .about-visual{
+      min-height:520px;border-radius:28px;background:
+      linear-gradient(rgba(16,35,31,.08),rgba(16,35,31,.08)),
+      linear-gradient(135deg,#d9cbb2,#9daf9f);
+      position:relative;overflow:hidden;
+    }
+    .about-visual:before{
+      content:"SM";position:absolute;right:20px;bottom:-35px;
+      font-family:"Playfair Display",serif;font-size:13rem;color:rgba(255,255,255,.38);font-weight:700;
+    }
+    .about-copy h2{font-size:clamp(2.4rem,4.5vw,4rem);margin:18px 0 24px}
+    .about-copy p{color:var(--muted)}
+    .check-list{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:28px 0 36px;padding:0;list-style:none}
+    .check-list li:before{content:"✓";color:var(--green);font-weight:800;margin-right:9px}
+    .cta{padding-top:0}
+    .cta-box{
+      background:var(--green);color:#fff;border-radius:30px;padding:70px;
+      display:flex;align-items:center;justify-content:space-between;gap:45px;
+      box-shadow:var(--shadow);
+    }
+    .cta-box h2{font-size:clamp(2.3rem,4.4vw,4rem);max-width:680px}
+    .cta-box p{color:#d6e0dc;max-width:600px}
+    .cta-box .btn{background:#fff;color:var(--green);white-space:nowrap}
+    footer{padding:42px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .reveal{opacity:0;transform:translateY(20px);transition:.7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @media(max-width:900px){
+      .nav-links a:not(.btn){display:none}
+      .hero-grid,.section-heading,.about-grid{grid-template-columns:1fr}
+      .hero{padding-top:125px}
+      .portrait-wrap{max-width:560px;margin:auto}
+      .service-grid{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr 1fr}
+      .case-grid{grid-template-columns:1fr}
+      .cta-box{padding:48px 34px;display:block}
+      .cta-box .btn{margin-top:20px}
+    }
+    @media(max-width:560px){
+      .container{width:min(100% - 28px,1160px)}
+      .brand{font-size:1rem}
+      .nav .btn{min-height:42px;padding:0 15px;font-size:.82rem}
+      h1{font-size:3.3rem}
+      .portrait-card{min-height:480px}
+      .floating-card{left:12px;right:12px;bottom:18px}
+      section{padding:78px 0}
+      .stats{grid-template-columns:1fr}
+      .check-list{grid-template-columns:1fr}
+      .cta-box{padding:40px 25px}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Sarah Mitchell</a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#results">Results</a>
+        <a href="#about">About</a>
+        <a class="btn btn-primary" href="mailto:sarah@example.com">Book a consultation</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container hero-grid">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">Strategy & Operations Consultant</div>
+        <h1>Clarity for your next stage of <span>growth.</span></h1>
+        <p>I partner with ambitious leaders to simplify complexity, strengthen operations, and turn strategic plans into measurable business results.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Start a conversation →</a>
+          <a class="btn btn-secondary" href="#results">Explore my work</a>
+        </div>
+        <div class="trust-row">
+          <div class="trust-item"><strong>12+ years</strong><span>Advising leadership teams</span></div>
+          <div class="trust-item"><strong>38 clients</strong><span>Across 7 industries</span></div>
+          <div class="trust-item"><strong>$24M+</strong><span>Client value unlocked</span></div>
+        </div>
+      </div>
+
+      <div class="portrait-wrap reveal">
+        <div class="portrait-card" aria-label="Stylized professional portrait of Sarah Mitchell">
+          <svg viewBox="0 0 600 760" role="img">
+            <defs>
+              <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#dbe6d7"/>
+                <stop offset="1" stop-color="#95aa98"/>
+              </linearGradient>
+              <linearGradient id="jacket" x1="0" x2="1">
+                <stop offset="0" stop-color="#173b32"/>
+                <stop offset="1" stop-color="#2a6a58"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="760" fill="url(#bg)"/>
+            <circle cx="480" cy="120" r="170" fill="#c7a35f" opacity=".28"/>
+            <circle cx="100" cy="620" r="210" fill="#ffffff" opacity=".22"/>
+            <path d="M128 760c15-170 92-260 172-260s158 90 172 260z" fill="url(#jacket)"/>
+            <path d="M245 483l55 100 55-100z" fill="#fff7ed"/>
+            <ellipse cx="300" cy="330" rx="112" ry="143" fill="#e7b993"/>
+            <path d="M187 342c-5-92 28-184 116-184 99 0 126 99 108 195-18-31-31-69-35-108-47 48-106 68-189 62z" fill="#4a2f27"/>
+            <path d="M203 313c4 123 45 183 98 183 60 0 98-73 101-185-35 7-70-11-99-50-28 27-62 45-100 52z" fill="#e7b993"/>
+            <ellipse cx="260" cy="346" rx="8" ry="6" fill="#33231f"/>
+            <ellipse cx="342" cy="346" rx="8" ry="6" fill="#33231f"/>
+            <path d="M277 413c18 14 34 14 50 0" stroke="#a65655" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <path d="M190 288c12-94 64-150 119-150 66 0 118 63 111 167-24-109-88-106-123-58-34-47-71-37-107 41z" fill="#4a2f27"/>
+            <path d="M205 318c-25 10-35 52-10 78" stroke="#e7b993" stroke-width="23" fill="none" stroke-linecap="round"/>
+            <path d="M397 318c25 10 35 52 10 78" stroke="#e7b993" stroke-width="23" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="floating-card">
+          <small>Recent client result</small>
+          <strong>Reduced operating costs by 18% in six months.</strong>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow" style="color:#d9bf8a">How I help</div>
+          <h2>Strategy that moves beyond the slide deck.</h2>
+        </div>
+        <p>Every engagement is designed around your business—not a generic framework. Together, we identify what matters, build alignment, and create a practical path forward.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card reveal">
+          <div class="icon">01</div>
+          <h3>Growth Strategy</h3>
+          <p>Market assessment, strategic planning, positioning, and roadmaps that turn ambition into focused action.</p>
+        </article>
+        <article class="service-card reveal">
+          <div class="icon">02</div>
+          <h3>Operational Excellence</h3>
+          <p>Process redesign, cost optimization, and operating models that help teams work faster and smarter.</p>
+        </article>
+        <article class="service-card reveal">
+          <div class="icon">03</div>
+          <h3>Leadership Alignment</h3>
+          <p>Facilitated workshops and decision frameworks that create clarity, ownership, and momentum.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="results" id="results">
+    <div class="container">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">Selected impact</div>
+          <h2>Results leaders can measure.</h2>
+        </div>
+        <p>My work is grounded in measurable outcomes, from improving margins and accelerating delivery to creating stronger alignment across executive teams.</p>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><strong>31%</strong><span>Average improvement in delivery speed</span></div>
+        <div class="stat"><strong>$8.4M</strong><span>Annualized savings identified</span></div>
+        <div class="stat"><strong>4.9/5</strong><span>Average client satisfaction rating</span></div>
+        <div class="stat"><strong>92%</strong><span>Clients who return or refer</span></div>
+      </div>
+
+      <div class="case-grid">
+        <article class="case-card reveal">
+          <div class="case-visual">
+            <div><span>Consumer Services</span><h3 style="margin-top:10px">Scaling without losing control</h3></div>
+          </div>
+          <div class="case-body">
+            <h3>Built a scalable operating model for a fast-growing services company.</h3>
+            <p>Clarified decision rights, redesigned core workflows, and introduced a leadership dashboard across five departments.</p>
+            <span class="result-pill">18% lower operating costs</span>
+          </div>
+        </article>
+        <article class="case-card reveal">
+          <div class="case-visual alt">
+            <div><span>B2B Technology</span><h3 style="margin-top:10px">From scattered priorities to one plan</h3></div>
+          </div>
+          <div class="case-body">
+            <h3>Aligned a leadership team around a focused three-year growth strategy.</h3>
+            <p>Facilitated executive workshops, assessed market opportunities, and created an actionable strategic roadmap.</p>
+            <span class="result-pill">27% revenue growth in year one</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial">
+    <div class="container">
+      <div class="quote-box reveal">
+        <div class="quote-mark">“</div>
+        <blockquote>Sarah brought structure to a problem that had felt overwhelming for months. She earned trust quickly, challenged our assumptions, and gave us a plan we could actually execute.</blockquote>
+        <div class="quote-person"><strong>Elena Rodriguez</strong> · COO, Northline Partners</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-visual reveal"></div>
+      <div class="about-copy reveal">
+        <div class="eyebrow">About Sarah</div>
+        <h2>A practical advisor for ambitious leaders.</h2>
+        <p>I’ve spent more than a decade helping executives navigate growth, transformation, and operational complexity. My approach combines rigorous analysis with a deep understanding of how organizations and people actually work.</p>
+        <p>Before launching my independent practice, I advised Fortune 500 companies and emerging businesses across technology, consumer services, financial services, and healthcare.</p>
+        <ul class="check-list">
+          <li>MBA, Northwestern Kellogg</li>
+          <li>Former Deloitte Strategy</li>
+          <li>Certified change practitioner</li>
+          <li>Board and founder advisor</li>
+        </ul>
+        <a class="btn btn-secondary" href="mailto:sarah@example.com">Connect with Sarah</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="container">
+      <div class="cta-box reveal">
+        <div>
+          <h2>Ready to turn your biggest challenge into a clear plan?</h2>
+          <p>Book a complimentary 30-minute conversation to discuss your goals, priorities, and where an outside perspective could create value.</p>
+        </div>
+        <a class="btn" href="mailto:sarah@example.com?subject=Consultation%20Request">Schedule a call →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Sarah Mitchell Consulting. Demo website.</span>
+      <span>LinkedIn · Atlanta, GA · sarah@example.com</span>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
